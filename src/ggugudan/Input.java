@@ -13,10 +13,9 @@ public class Input {
 
 		// 2. 사용자가 입력한 값을 ','쉼표 기준으로 분리하기
 		String[] splitedValue = inputValue.split(",");
-
+		
 		first = Integer.parseInt(splitedValue[0]);
 		second = Integer.parseInt(splitedValue[1]);
-
 	}
 
 }
