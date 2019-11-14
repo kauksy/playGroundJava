@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author SOO
- *
- */
-package gugudan;
