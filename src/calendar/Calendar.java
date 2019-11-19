@@ -7,7 +7,9 @@ import java.util.Scanner;
  */
 public class Calendar {
 
+	private static String PROMPT = "cal> ";
 	private static final int[] maxMonthDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
 	static Scanner scan = new Scanner(System.in);
 	Calendar cal = new Calendar();
 
@@ -46,8 +48,27 @@ public class Calendar {
 		}
 	}
 
-	public static void main(String[] args) {
-		
-		cycleCalendar();
+	public static void exitCondition() {
+		int month;
+		while (true) {
+			System.out.println("월을 입력하세요.");
+			System.out.print(PROMPT);
+			month = scan.nextInt();
+			if(month == -1 ){
+				break; // 루프 빠져나가기
+			}
+			if(month > 12){
+				continue; // 루프의 처음으로 돌아가서, 다시 로프 돌기
+			}
+			System.out.printf("%d월은 %d일까지 있습니다. \n", month, getMaxDaysOfMonth(month));
+		}
+
+		System.out.println("Bye~! Have a nice day!");
 	}
+
+	
+	public static void main(String[] args) {
+		exitCondition();
+	}
+
 }
