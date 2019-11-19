@@ -16,9 +16,10 @@ public class Calendar {
 		Calendar cal = new Calendar();
 		Scanner scan = new Scanner(System.in);
 		int month = scan.nextInt();
-
+		
 		System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getMaxDaysOfMonth(month));
 		scan.close();
+
 		System.out.println("일    월    화    수     목     금    토");
 		System.out.println("----------------------");
 		System.out.println("1  2  3   4   5   6  7");
