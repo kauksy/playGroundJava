@@ -1,19 +1,19 @@
 package calendar.exam;
 
 import java.util.Scanner;
-import calendar.CalendarFactory;
 
 public class Prompt {
 
-	public static void main(String[] args) {
-		String PROMPT = "cal> ";
+	private final static String PROMPT = "cal> ";
+
+	public void runPrompt() {
 		Scanner scan = new Scanner(System.in);
-		CalendarFactory cal = new CalendarFactory();
+		Calendar cal = new Calendar();
 
 		int month = 1;
 
 		while (true) {
-			System.out.println("달을 입력하세요");
+			System.out.println("달을 입력하세요.");
 			System.out.print(PROMPT);
 			month = scan.nextInt();
 
@@ -25,10 +25,17 @@ public class Prompt {
 				continue;
 			}
 
-			System.out.printf("%d월은 %d일까지 있습니다\n", month, cal.getMaxDaysOfMonth(month));
+			cal.printCalendar(2019, month);
 		}
 		System.out.println("Bye~");
 		scan.close();
+	}
+
+	public static void main(String[] args) {
+
+		Prompt p = new Prompt();
+		p.runPrompt();
+
 	}
 
 }
