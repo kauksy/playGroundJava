@@ -13,13 +13,33 @@ public class CalendarFactory {
 		return maxMonthDays[month - 1];
 	}
 
-	public static void printCalendar() {
-		System.out.println("일      월      화     수      목      금     토");
+	public static void print_28Calendar() {
+		System.out.println("일     월     화     수     목    금     토");
 		System.out.println("---------------------------");
 		System.out.println(" 1   2   3   4   5   6   7");
 		System.out.println(" 8   9  10  11  12  13  14");
 		System.out.println("15  16  17  18  19  20  21");
 		System.out.println("22  23  24  25  26  27  28");
+	}
+	
+	public static void print_30Calendar() {
+		System.out.println("일     월     화     수     목    금     토");
+		System.out.println("---------------------------");
+		System.out.println(" 1   2   3   4   5   6   7");
+		System.out.println(" 8   9  10  11  12  13  14");
+		System.out.println("15  16  17  18  19  20  21");
+		System.out.println("22  23  24  25  26  27  28");
+		System.out.println("29  30");
+	}
+	
+	public static void print_31Calendar() {
+		System.out.println("일     월     화     수     목    금     토");
+		System.out.println("---------------------------");
+		System.out.println(" 1   2   3   4   5   6   7");
+		System.out.println(" 8   9  10  11  12  13  14");
+		System.out.println("15  16  17  18  19  20  21");
+		System.out.println("22  23  24  25  26  27  28");
+		System.out.println("29  30  31");
 	}
 
 	public static void inputCalendar() {
