@@ -16,21 +16,26 @@ public class CalendarExam {
 		String day;
 
 		while (true) {
-			System.out.println("년도를 입력해주세요.");
+			System.out.println("년도를 입력해주세요. (EXIT: -1)");
 			System.out.print("Year> ");
 			year = scan.nextInt();
+			
+			if (year == -1) {
+				break;
+			}
 
 			System.out.println("월을 입력해주세요.");
 			System.out.print("Month> ");
 			month = scan.nextInt();
 
+			if (month > 12 || month <1) {
+				System.out.println("잘못된 월을 입력하셨습니다.");
+				continue;
+			}
+			
 			System.out.println("첫번째 요일을 입력하세요. (SU, MO, WE, TH, FR, SA)");
 			System.out.print("WeekDay> ");
 			day = scan.next();
-
-			if (year == -1 || month == -1) {
-				break;
-			}
 
 			int maxDay = myCalendar.getMonthOfMaxDays(year, month);
 			myCalendar.calendarFrame(year, month);
@@ -41,7 +46,7 @@ public class CalendarExam {
 				System.out.printf(SPACE);
 			}
 
-			int nextWeek = WEEK - firstDay;
+			int nextWeek = WEEK - firstDay == 7 ? 0 : WEEK - firstDay;
 
 			for (int i = 1; i <= maxDay; i++) {
 				System.out.printf("%3d", i);
@@ -51,7 +56,7 @@ public class CalendarExam {
 			}
 			System.out.println();
 		}
-		System.out.println();
+		System.out.println("프로그램을 종료합니다.");
 
 	}
 
