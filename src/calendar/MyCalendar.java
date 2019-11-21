@@ -46,4 +46,26 @@ public class MyCalendar {
 	public int getFirstDay(String day) {
 		return (firstDay.get(day) - 1);
 	}
+	
+	public int todayIs() {
+		Calendar cal = Calendar.getInstance();
+		int todayIs = cal.get(Calendar.DAY_OF_WEEK) - 1;
+		System.out.println("todayIs: " + todayIs);
+		return todayIs;
+	}
+
+	public int findThisMonth(int todayIs) {
+		Calendar cal = Calendar.getInstance();
+		int thisMonth = cal.get(Calendar.MONTH) + 1;
+		System.out.println("thisMonth: " + thisMonth);
+		return thisMonth;
+		
+	}
+
+	public int findThisDay() {
+		Calendar cal = Calendar.getInstance();
+		int thisDay = cal.get(Calendar.DATE);
+		System.out.println("thisDay: " + thisDay);
+		return thisDay;
+	}
 }
