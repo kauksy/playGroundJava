@@ -1,11 +1,14 @@
 package calendar;
 
 import java.util.Scanner;
+import java.util.TimerTask;
 
 public class CalendarExam {
 
 	private static Scanner scan = new Scanner(System.in);
 	private static MyCalendar myCalendar = new MyCalendar();
+	private static CalendarInformation ci = new CalendarInformation();
+
 	private static final int WEEK = 7;
 	private static final String SPACE = "   ";
 
@@ -13,7 +16,14 @@ public class CalendarExam {
 
 		int year = -1;
 		int month = -1;
-		String day;
+
+		// 기준 값 구하기: 올해 1월 1일은 무슨 요일인지 구한다.
+		int standardYoil = ci.getStandardYearInfo();
+		if (standardYoil == -1) {
+			System.out.println("연산에 버그가 있습니다.");
+		}
+		standardYoil = myCalendar.getDay(standardYoil);
+		System.out.println("standardYoil: " + standardYoil);
 
 		while (true) {
 			System.out.println("년도를 입력해주세요. (EXIT: -1)");
@@ -24,10 +34,10 @@ public class CalendarExam {
 				break;
 			}
 
-			checkThisYearInfo();
+			// 사용자 입력 1월 1일의 요일
+			int inputStandardYoil = ci.getInputStandardYearInfo(year, standardYoil);
+			System.out.println("inputStandardYoil: " + inputStandardYoil);
 
-			// 1. 입력받은 연도 기준으로 평년, 윤년의 값을 Count한다.
-			// 1-1. 2000년 전후 기준으로 나뉘어야한다?..
 			System.out.println("월을 입력해주세요.");
 			System.out.print("Month> ");
 			month = scan.nextInt();
@@ -36,16 +46,14 @@ public class CalendarExam {
 				System.out.println("잘못된 월을 입력하셨습니다.");
 				continue;
 			}
-
-			// 1.
-			System.out.println("첫번째 요일을 입력하세요. (SU, MO, WE, TH, FR, SA)");
-			System.out.print("WeekDay> ");
-			day = scan.next();
+			
+			
 
 			int maxDay = myCalendar.getMonthOfMaxDays(year, month);
 			myCalendar.calendarFrame(year, month);
 
-			int firstDay = myCalendar.getFirstDay(day);
+			int inputDistance = ci.getIputFirstDayOfMonth(month, year);
+			int firstDay = ci.getYoil(inputStandardYoil, inputDistance);
 
 			for (int i = 0; i < firstDay; i++) {
 				System.out.printf(SPACE);
@@ -62,14 +70,5 @@ public class CalendarExam {
 			System.out.println();
 		}
 		System.out.println("프로그램을 종료합니다.");
-
 	}
-
-	private static void checkThisYearInfo() {
-		int todayIs = myCalendar.todayIs();
-		int thisMonth = myCalendar.findThisMonth(todayIs);
-		int thisDay = myCalendar.findThisDay();
-
-	}
-
 }
