@@ -56,12 +56,14 @@ public class Calendar {
 	private int getWeekday(int year, int month, int day) {
 		// 1월 1일: 일요일 > 기준날짜의 요일을 알면 1월 N일의 요일을 알수 있다.
 		// 컴퓨터에 입력 되어 있는 달력은 1970년 1월 1일 부터 시작된다.
+		// 1970년 1월 1일은 목요일이다.
 		int syear = 1970;
 		final int STANDARD_WEEKDAY = 4; // 1970.01.01: Thursday
 
-		// 연도는 윤년:366, 일반: 365
+		// count로 기준일과 입력한 월의 차일을 구한다.
 		int count = 0;
 		for (int i = syear; i < year; i++) {
+			// 연도는 윤년:366, 일반: 365
 			int delta = isLeapYear(i) ? 366 : 365;
 			count += delta;
 		}
