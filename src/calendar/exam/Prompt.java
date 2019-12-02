@@ -33,7 +33,6 @@ public class Prompt {
 
 		int month = 1;
 		int year = 2017;
-		int weekday = 0;
 
 		while (true) {
 			System.out.println("년도를 입력하세요.(exit: -1)");
@@ -51,11 +50,7 @@ public class Prompt {
 				continue;
 			}
 
-			System.out.println("첫째날의 요일을 입력하세요. (SU, MO, TU, WE, TH, FR, SA)");
-			String str_weekday = scan.next();
-			weekday = parseDay(str_weekday);
-
-			cal.printCalendar(year, month, weekday);
+			cal.printCalendar(year, month);
 		}
 		System.out.println("Bye~");
 		scan.close();
