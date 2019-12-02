@@ -8,7 +8,6 @@ public class MyCalendar {
 	public static int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	private static final Map<String, Integer> firstDay;
-
 	static {
 		firstDay = new HashMap<String, Integer>();
 		firstDay.put("SU", 1);
@@ -43,13 +42,8 @@ public class MyCalendar {
 
 		return BASIC_MAX_DAYS[month - 1];
 	}
-	
-	public int getDay(int day) {
-		for(String str : firstDay.keySet()){
-			if(firstDay.get(str) == day){
-				return day;
-			}
-		}
-		return -1;
+
+	public int getFirstDay(String day) {
+		return (firstDay.get(day) - 1);
 	}
 }
