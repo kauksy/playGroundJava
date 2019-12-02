@@ -25,7 +25,7 @@ public class Calendar {
 		System.out.println(" SU MO TU WE TH FR SA");
 		System.out.println("----------------------------");
 
-		// get Weekday automaically
+		// get Weekday automatically
 		int weekday = getWeekday(year, month, 1);
 		// print blank space
 		for (int i = 0; i < weekday; i++) {
