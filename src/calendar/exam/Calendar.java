@@ -1,9 +1,40 @@
 package calendar.exam;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
 public class Calendar {
 
 	private static final int[] MAX_DAYS = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private static final int[] LEAP_MAX_DAYS = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	// 검색은 대부분 해시테이블을 씀! 해시테이블, 해시맵 = 검색
+	// 생성자 호출할 때 초기화 되도록 한다.
+	private HashMap<Date, String> planMap;
+
+	public Calendar() {
+		// 키: 날짜, 값: 일정(계획)
+		planMap = new HashMap<Date, String>();
+	}
+
+	/**
+	 * 
+	 * @param date
+	 *            ex: "2019-12-06"
+	 * @param plan
+	 */
+	public void registerPlan(String strdate, String plan) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-mm-dd").parse(strdate);
+		planMap.put(date, plan);
+	}
+
+	public String searchPlan(String strdate) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-mm-dd").parse(strdate);
+		String plan = planMap.get(date);
+		return plan;
+	}
 
 	public static int getMaxDaysOfMonth(int year, int month) {
 		if (isLeapYear(year)) {
@@ -79,4 +110,17 @@ public class Calendar {
 
 		return weekday;
 	}
+
+//	public static void main(String[] args) throws ParseException {
+//		Calendar cal = new Calendar();
+//		System.out.println(cal.getWeekday(1970, 1, 1));
+//		System.out.println(cal.getWeekday(1971, 1, 1));
+//		System.out.println(cal.getWeekday(1972, 1, 1));
+//		System.out.println(cal.getWeekday(1973, 1, 1));
+//		System.out.println(cal.getWeekday(1974, 1, 1));
+//		System.out.println(cal.getWeekday(1975, 1, 1));
+//
+//		cal.registerPlan("2019-12-06", "강의 완강하기");
+//		System.out.println(cal.searchPlan("2019-12-06"));
+//	}
 }
