@@ -110,17 +110,4 @@ public class Calendar {
 
 		return weekday;
 	}
-
-//	public static void main(String[] args) throws ParseException {
-//		Calendar cal = new Calendar();
-//		System.out.println(cal.getWeekday(1970, 1, 1));
-//		System.out.println(cal.getWeekday(1971, 1, 1));
-//		System.out.println(cal.getWeekday(1972, 1, 1));
-//		System.out.println(cal.getWeekday(1973, 1, 1));
-//		System.out.println(cal.getWeekday(1974, 1, 1));
-//		System.out.println(cal.getWeekday(1975, 1, 1));
-//
-//		cal.registerPlan("2019-12-06", "강의 완강하기");
-//		System.out.println(cal.searchPlan("2019-12-06"));
-//	}
 }
